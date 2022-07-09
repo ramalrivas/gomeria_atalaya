@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../img/favicon/site.webmanifest">
+
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <title>Gomeria "Atalaya"</title>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html"><img src="../logo2.png" alt="Gomeria - Atalaya" id="logoImage"></a>
+        <h1>Gomería</h1>
+        <h1>"ATALAYA"</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li>Inicio</li>
+            <li>La Empresa</li>
+            <li>Servicios</li>
+        </ul>
+        <button class="exit-invoice" id="exitRestrigedArea"><- Salir</button>
+    </nav>
+    <main id="restringed-area">
+        <div class="welcome" id="usserId">
+
+        </div>
+        <!--Facturador-->
+        <h2>Generador de Orden de Trabajo</h2>
+        <div class="form__invoice" id="invoiceSection">
+            <form>
+                <fieldset class="form__invoice__date">
+                    <legend>Fecha de Emisión</legend>
+                    <label for="date"></label>
+                    <input type="date" id="dateInvoice">
+                </fieldset>
+                <fieldset class="form__invoice__client">
+                    <legend>Cliente:</legend>
+                    <select name="line" id="idLine"></select>
+                    <select name="unit" id="idUnit"></select>
+                </fieldset>
+                <fieldset class="form__invoice__service">
+                    <legend>Servicios:</legend>
+                    <select name="service" id="service">
+                    </select>
+                    <label for="serviceUnit">Cant.</label>
+                    <input type="number" id="serviceUnit" maxlength="2">
+                    <button id="addServicebtn">[+] Agregar</button><button id="removeService">[-] Quitar</button>
+                </fieldset>
+                <fieldset class="form__invoice__piece">
+                    <legend> Repuestos: </legend>
+                    <select name="piece" id="piece"></select>
+                    <label for="pieceUnit">Cant.</label>
+                    <input type="number" id="pieceUnit" maxlength="2">
+                    <button id="addPiece">[+] Agregar</button><button id="removePiece">[-] Quitar</button>
+                </fieldset>
+                <fieldset class="form__invoice__price">
+                    <legend>Valor total</legend>
+                    <label for="totalInvoice">$</label>
+                    <input id="totalInvoice" type="number">
+                </fieldset>
+            </form>
+
+            <div id="preview">
+                <h4>Fecha:</h4>
+                <p id="previewDate">
+                    <p>
+                        <h4>Linea:</h4>
+                        <p id="previewLine">
+                            <p>
+                                <h4>Interno:</h4>
+                                <p id="previewUnit"></p>
+                                <div id="previewService">
+                                    <h4>Servicios:</h4>
+
+                                </div>
+                                <h4>Repuestos utilizados:</h4>
+                                <p id="previewPiece"></p>
+                                <h4>Valor Total:</h4>
+                                <p id="previewFinalPrice"></p>
+
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>Todos los derechos reservados. Año 2022</p>
+    </footer>
+    <script src="../js/arrays.js"></script>
+    <script src="../js/miarchivo.js"></script>
+</body>
+
+</html>

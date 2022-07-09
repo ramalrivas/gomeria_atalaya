@@ -1,0 +1,271 @@
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background-color: aquamarine;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: rgb(62, 109, 60);
+    height: 200px;
+}
+
+header h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 60px;
+    color: white;
+}
+
+header img {
+    height: 180px;
+}
+
+
+/* Menu */
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: cadetblue;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    padding: 0px 5px 0px 5px;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+
+/* Modal y Formulario - Login */
+
+.login-open-btn {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    padding: 0px 5px 0px 5px;
+    cursor: pointer;
+}
+
+dialog {
+    margin: auto;
+    cursor: pointer;
+}
+
+dialog::backdrop {
+    background-color: rgba(0.1, 0.3, 0.5, 0.5);
+}
+
+.close-modal-btn {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bolder;
+    margin-left: 187px;
+    background: blueviolet;
+    padding: 0px 5px 0px 5px;
+}
+
+.modal form {
+    cursor: default;
+    padding: 10px;
+}
+
+.modal fieldset {
+    border: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal label,
+input,
+ ::placeholder {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.login-btn {
+    margin-top: 10px;
+    padding: 0px 5px 2px 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.exit-invoice {
+    padding: 0px 10px 0px 5px;
+    margin-right: 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+table,
+td,
+th {
+    border: 1px solid #595959;
+    border-collapse: collapse;
+}
+
+td,
+th {
+    padding: 3px;
+    width: 30px;
+    height: 25px;
+}
+
+th {
+    background: #f0e6cc;
+}
+
+.even {
+    background: #fbf8f0;
+}
+
+.odd {
+    background: #fefcf9;
+}
+
+
+/* Formulario - Area Restringida*/
+
+.welcome {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.form__invoice {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.form__invoice form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form__invoice__date {
+    display: flex;
+    width: 100%;
+}
+
+.form__invoice__date input {
+    margin: 5px 0px 10px 0px;
+}
+
+.form__invoice__client {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 10px;
+}
+
+.form__invoice__client select {
+    margin: 5px 0px 10px 0px;
+}
+
+.form__invoice__service {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.form__invoice__service select {
+    margin: 10px 0px 10px 0px;
+}
+
+.form__invoice__service input {
+    max-width: 50px;
+}
+
+.form__invoice__piece {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.form__invoice__piece__search {
+    min-width: 100px;
+}
+
+.form__invoice__piece select {
+    margin: 10px 0px 10px 0px;
+}
+
+.form__invoice__piece input {
+    max-width: 50px;
+}
+
+.form__invoice__price {
+    display: flex;
+    width: 100%;
+}
+
+.form__invoice__price input {
+    display: flex;
+    margin: 10px 0px 10px 0px;
+    max-width: 100px;
+}
+
+.form__invoice__preview {
+    width: 50%;
+}
+
+.form__invoice__preview input {
+    border: 0;
+}
+
+.form__invoice__btn {
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.developing__area {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: red;
+}
+
+.form__buttoms button {
+    padding: 3px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.form__add {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+footer {
+    display: flex;
+    background-color: rgb(62, 109, 60);
+    width: 100%;
+}
