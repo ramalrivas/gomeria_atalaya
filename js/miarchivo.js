@@ -189,4 +189,4 @@ function totalCalculator(subTotalService, subTotalPiece) {
 
 
 
-//--------------------------- VISTA PREVIA ---------------------------//
+//------------------------ RESULTADO FINAL ------------------------//
