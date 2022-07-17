@@ -1,0 +1,19 @@
+{
+  "name": "atalaya_gomeria",
+  "version": "1.0.0",
+  "description": "Sitio web de la Gomeria Atalaya con su app para generar Ordenes de Trabajo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramalrivas/gomeria_atalaya.git"
+  },
+  "author": "Ramiro Rivas.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ramalrivas/gomeria_atalaya/issues"
+  },
+  "homepage": "https://github.com/ramalrivas/gomeria_atalaya#readme"
+}

@@ -84,62 +84,78 @@ function selectedUnit() {
 
 //------------------------ SERVICIO OFRECIDO -----------------------//
 
-const totalServiceOffer = [];
+const totalServiceOffer = 0;
+
 const subTotalService = [];
+const selectedService = [];
 const previewService = document.getElementById('previewService');
-
 const addServiceBtn = document.getElementById('addServicebtn');
-const removeServiceBtn = document.getElementsByClassName('removeServiceBtn');
+const removeServiceBtn = document.getElementById('removeServiceBtn');
 
 
-let selectService = document.getElementById('service');
-let optionService = document.createElement('option');
-optionService.text = 'Seleccione un Servicio...';
-optionService.value = '0';
-selectService.appendChild(optionService);
+const serviceSelectBuild = () => {
 
-serviceType.forEach(item => {
-    optionService = document.createElement('option');
-    optionService.text = item.service;
-    optionService.value = '' + item.price;
-    selectService.appendChild(optionService);
-});
+    service.innerHTML = `<option value="0">Seleccionar Servicio</option>`;
+    serviceType.forEach(item =>
+        service.innerHTML += `<option value="${item.price}">${item.service}</option>`
+    )
+};
+serviceSelectBuild();
 
+// Seleccionar Servicio.
+
+const SelectedService = () => {
+    const service = document.getElementById('service');
+    let servicePrice = document.getElementById('service').value;
+    let serviceName = service.options[service.selectedIndex].text;
+
+    selectedService.push(serviceName);
+    subTotalService.push(servicePrice);
+    localStorage.setItem('Servicio', JSON.stringify(selectedService));
+};
 //Agregar Servicio.
 
-let addService = () => {
+const addService = () => {
 
-    previewService.innerHTML = '';
-    subTotalService.forEach(item => {
-        previewService.innerHTML += `<p id="itemService">${item}</p>
-        <button id="removeServiceBtn">X</button>
-        `
+    previewService.innerHTML = '<h4>Servicios:</h4><ul id="serviceList"></ul>';
+    selectedService.forEach(item => {
+        previewService.innerHTML += `
+        <li>${item} </li>`
     })
 
 };
 
+//Quitar Servicio
+const removeService = () => {
+    let serviceList = document.getElementById('serviceList');
+    let serviceItem = previewService.lastElementChild;
+    serviceList.remove(serviceItem);
+};
+
+//Eventos
 addServiceBtn.addEventListener("click", () => {
     event.preventDefault();
-    let service = document.getElementById('service').value;
-    subTotalService.push(parseInt(service));
-    localStorage.setItem('Servicio', JSON.stringify(subTotalService));
+    SelectedService();
     addService();
+    console.log(selectedService);
     console.log(subTotalService);
 
-
 });
-
-// Quitar Servicio.
-/*
-let removeService = () => {
-
-}
 
 removeServiceBtn.addEventListener("click", () => {
-
+    event.preventDefault();
+    removeService();
 });
 
-*/
+//Calcular el precio del Servicio Prestado.
+const totalServiceCalc = () => {
+
+    totalServiceOffer += subTotalService.reduce((acc, item) => {
+        return acc += item + 0;
+    });
+
+};
+
 
 // -------------------- REPUESTOS UTILIZADOS -------------------- // 
 
@@ -176,9 +192,9 @@ function selectedPiece() {
 
 
 
-function totalCalculator(subTotalService, subTotalPiece) {
+function totalCalculator(totalService, subTotalPiece) {
 
-    totalCalc = subTotalService + subTotalPiece;
+    totalCalc = totalService + subTotalPiece;
     document.querySelector('#totalInvoice').textContent = totalCalc;
 
 };
