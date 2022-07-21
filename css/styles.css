@@ -71,6 +71,7 @@ main {
     font-weight: bold;
     padding: 0px 5px 0px 5px;
     cursor: pointer;
+    margin: 5px 5px 5px 5px;
 }
 
 dialog {
@@ -119,7 +120,7 @@ input,
 
 .exit-invoice {
     padding: 0px 10px 0px 5px;
-    margin-right: 5px;
+    margin: 5px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 14px;
     font-weight: bold;
@@ -248,6 +249,13 @@ input,
 
 .preview__service li {
     list-style: none;
+}
+
+.preview__service li a {
+    cursor: pointer;
+    float: right;
+    padding: 3px 7px;
+    background: #fbfbfb;
 }
 
 footer {

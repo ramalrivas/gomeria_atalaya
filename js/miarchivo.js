@@ -84,7 +84,7 @@ function selectedUnit() {
 
 //------------------------ SERVICIO OFRECIDO -----------------------//
 
-const totalServiceOffer = 0;
+let totalServiceOffer = 0;
 
 const subTotalService = [];
 const selectedService = [];
@@ -102,6 +102,7 @@ const serviceSelectBuild = () => {
 };
 serviceSelectBuild();
 
+
 // Seleccionar Servicio.
 
 const SelectedService = () => {
@@ -110,26 +111,30 @@ const SelectedService = () => {
     let serviceName = service.options[service.selectedIndex].text;
 
     selectedService.push(serviceName);
-    subTotalService.push(servicePrice);
+    subTotalService.push(parseInt(servicePrice));
     localStorage.setItem('Servicio', JSON.stringify(selectedService));
 };
 //Agregar Servicio.
-
 const addService = () => {
-
     previewService.innerHTML = '<h4>Servicios:</h4><ul id="serviceList"></ul>';
     selectedService.forEach(item => {
-        previewService.innerHTML += `
-        <li>${item} </li>`
+        previewService.innerHTML += `<li>${item} <a onclick="removeService(this);">&times;</a></li>`
     })
 
 };
 
+
 //Quitar Servicio
-const removeService = () => {
-    let serviceList = document.getElementById('serviceList');
-    let serviceItem = previewService.lastElementChild;
-    serviceList.remove(serviceItem);
+const removeService = (content) => {
+    content.parentNode.parentNode.removeChild(content.parentNode);
+    //subTotalService.length = subTotalService.length - 1;
+
+    /*
+    let serviceLi = previewService.children.length;
+    serviceLi = serviceLi - 1;
+    let serviceLastLi = document.querySelectorAll('li')[serviceLi];
+    previewService.removeChild(serviceLastLi);
+*/
 };
 
 //Eventos
@@ -137,6 +142,7 @@ addServiceBtn.addEventListener("click", () => {
     event.preventDefault();
     SelectedService();
     addService();
+
     console.log(selectedService);
     console.log(subTotalService);
 
@@ -145,16 +151,15 @@ addServiceBtn.addEventListener("click", () => {
 removeServiceBtn.addEventListener("click", () => {
     event.preventDefault();
     removeService();
+
+    console.log(subTotalService);
+
+    /* selectedService.length = selectedService.length - 1;
+    console.log(selectedService);*/
 });
 
-//Calcular el precio del Servicio Prestado.
-const totalServiceCalc = () => {
 
-    totalServiceOffer += subTotalService.reduce((acc, item) => {
-        return acc += item + 0;
-    });
 
-};
 
 
 // -------------------- REPUESTOS UTILIZADOS -------------------- // 
@@ -187,16 +192,25 @@ function selectedPiece() {
 
 //-------------------------- RESULTADO FINAL --------------------------//
 
+let totalCalc = 0;
+const finalPriceBtn = document.getElementById('finalPriceBtn');
 
+finalPriceBtn.addEventListener("click", () => {
+    event.preventDefault();
+
+    totalServiceOffer = subTotalService.reduce(function(previousValue, currentValue) {
+        return previousValue + currentValue;
+    });
+    console.log(totalServiceOffer);
+})
 
 
 
 
 function totalCalculator(totalService, subTotalPiece) {
 
-    totalCalc = totalService + subTotalPiece;
-    document.querySelector('#totalInvoice').textContent = totalCalc;
-
+    totalCalc = totalServiceOffer + totalPieceOffer;
+    console.log(totalServiceOffer);
 };
 
 
