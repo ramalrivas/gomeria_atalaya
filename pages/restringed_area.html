@@ -53,14 +53,14 @@
                     <select name="service" id="service"></select>
                     <label for="serviceUnit">Cant.</label>
                     <input type="number" id="serviceUnit" maxlength="2">
-                    <button id="addServicebtn">[+] Agregar</button><button id="removeServiceBtn">[-] Quitar</button>
+                    <button id="addServicebtn">[+] Agregar</button>
                 </fieldset>
                 <fieldset class="form__invoice__piece">
                     <legend> Repuestos: </legend>
                     <select name="piece" id="piece"></select>
                     <label for="pieceUnit">Cant.</label>
                     <input type="number" id="pieceUnit" maxlength="2">
-                    <button id="addPiece">[+] Agregar</button><button id="removePiece">[-] Quitar</button>
+                    <button id="addPieceBtn">[+] Agregar</button>
                 </fieldset>
                 <fieldset class="form__invoice__price">
                     <legend>Valor total</legend>
@@ -81,8 +81,8 @@
                                 <p id="previewUnit"></p>
                                 <div class="preview__service" id="previewService">
                                 </div>
-                                <h4>Repuestos utilizados:</h4>
-                                <p id="previewPiece"></p>
+                                <div class="preview__piece" id="previewPiece">
+                                </div>
                                 <h4>Valor Total:</h4>
                                 <p id="previewFinalPrice"></p>
 

@@ -26,7 +26,7 @@ welcomeUsser();
 
 // ---------------------- CARGA DE DATOS ------------------- //
 
-//Fecha de Facturación.
+//Fecha de Facturación - Invoice Date
 
 document.getElementById('dateInvoice').addEventListener('change', selectedDate);
 
@@ -37,7 +37,7 @@ function selectedDate() {
     localStorage.setItem('Fecha', JSON.stringify(date));
 }
 
-// Clientes. Linea de Transporte 
+// Clientes. Linea de Transporte - Client Transport Line
 let selectLine = document.getElementById('idLine');
 
 let optionLine = document.createElement('option');
@@ -59,7 +59,7 @@ function selectedLine() {
     localStorage.setItem('Linea', JSON.stringify(clientLine));
 }
 
-//Clientes. Interno de Linea
+//Clientes. Interno de Linea - Client Unit Transport Line
 
 let selectUnit = document.getElementById('idUnit');
 
@@ -83,27 +83,40 @@ function selectedUnit() {
 }
 
 //------------------------ SERVICIO OFRECIDO -----------------------//
-
+//Variables - Variables
 let totalServiceOffer = 0;
 
 const subTotalService = [];
 const selectedService = [];
 const previewService = document.getElementById('previewService');
 const addServiceBtn = document.getElementById('addServicebtn');
-const removeServiceBtn = document.getElementById('removeServiceBtn');
 
 
-const serviceSelectBuild = () => {
-
-    service.innerHTML = `<option value="0">Seleccionar Servicio</option>`;
-    serviceType.forEach(item =>
-        service.innerHTML += `<option value="${item.price}">${item.service}</option>`
-    )
+//Traigo los datos de service_type.json y lo imprimo en un select>option - JSON Connection and print in a Selext>Option Tag.
+const getServiceType = async(serviceType) => {
+    try {
+        const response = await fetch(`../json_files/service_type.json`);
+        serviceType = await response.json();
+        service.innerHTML = `<option value="0">Seleccionar Servicio</option>`;
+        serviceType.forEach(item =>
+            service.innerHTML += `<option value="${item.price}">${item.id} => ${item.service}</option>`
+        )
+    } catch (error) {
+        if (error instanceof TypeError) {
+            console.log("Type Error!!");
+        }
+        if (error instanceof SyntaxError) {
+            console.log("Syntax Error!!");
+        }
+        if (error instanceof ReferenceError) {
+            console.log("Reference Error!!");
+        }
+    }
 };
-serviceSelectBuild();
 
+getServiceType();
 
-// Seleccionar Servicio.
+// Seleccionar Servicio - Selected Service
 
 const SelectedService = () => {
     const service = document.getElementById('service');
@@ -114,7 +127,7 @@ const SelectedService = () => {
     subTotalService.push(parseInt(servicePrice));
     localStorage.setItem('Servicio', JSON.stringify(selectedService));
 };
-//Agregar Servicio.
+//Agregar Servicio - Add Service
 const addService = () => {
     previewService.innerHTML = '<h4>Servicios:</h4><ul id="serviceList"></ul>';
     selectedService.forEach(item => {
@@ -123,23 +136,17 @@ const addService = () => {
 
 };
 
-
-//Quitar Servicio
+//Quitar Servicio - Remove Service
 const removeService = (content) => {
     content.parentNode.parentNode.removeChild(content.parentNode);
-    //subTotalService.length = subTotalService.length - 1;
+    subTotalService.length = subTotalService.length - 1;
+    selectedService.length = selectedService.length - 1;
 
-    /*
-    let serviceLi = previewService.children.length;
-    serviceLi = serviceLi - 1;
-    let serviceLastLi = document.querySelectorAll('li')[serviceLi];
-    previewService.removeChild(serviceLastLi);
-*/
 };
 
-//Eventos
-addServiceBtn.addEventListener("click", () => {
-    event.preventDefault();
+//Eventos - Events
+addServiceBtn.addEventListener("click", (e) => {
+    e.preventDefault();
     SelectedService();
     addService();
 
@@ -148,46 +155,78 @@ addServiceBtn.addEventListener("click", () => {
 
 });
 
-removeServiceBtn.addEventListener("click", () => {
-    event.preventDefault();
-    removeService();
-
-    console.log(subTotalService);
-
-    /* selectedService.length = selectedService.length - 1;
-    console.log(selectedService);*/
-});
-
-
-
-
-
 // -------------------- REPUESTOS UTILIZADOS -------------------- // 
-
+//Variables - Variables
+let totalPieceUsed = 0;
 const subTotalPiece = [];
+const selectedPiece = [];
+const previewPiece = document.getElementById('previewPiece');
+const addPieceBtn = document.getElementById('addPieceBtn');
 
-let selectPiece = document.getElementById('piece');
 
-let option = document.createElement('option');
-option.text = 'Seleccionar Repuesto...';
-option.value = '0';
-selectPiece.appendChild(option);
+//Traigo los datos de piece_stock.json y lo imprimo en un select>option - JSON Connection and print in a Selext>Option Tag.
+const getPieceStock = async(pieceStock) => {
+    try {
+        const response = await fetch(`../json_files/piece_stock.json`);
+        pieceStock = await response.json();
+        piece.innerHTML = `<option value="0">Seleccionar Repuesto</option>`;
+        pieceStock.forEach(item =>
+            piece.innerHTML += `<option value="${item.price}">${item.id} => ${item.piece}</option>`
+        )
+    } catch (error) {
+        if (error instanceof TypeError) {
+            console.log("Type Error!!");
+        }
+        if (error instanceof SyntaxError) {
+            console.log("Syntax Error!!");
+        }
+        if (error instanceof ReferenceError) {
+            console.log("Reference Error!!");
+        }
+    }
+};
+getPieceStock();
 
-pieceStock.forEach(item => {
-    option = document.createElement('option');
-    option.text = item.piece;
-    option.value = '' + item.price;
-    selectPiece.appendChild(option);
-});
+// Seleccionar  Repuesto - Selected Piece
 
-document.getElementById('piece').addEventListener('change', selectedPiece);
+const opSelectedPiece = () => {
+    const piece = document.getElementById('piece');
+    let piecePrice = document.getElementById('piece').value;
+    let pieceName = piece.options[piece.selectedIndex].text;
 
-function selectedPiece() {
-    let piece = document.getElementById('piece').value;
-    document.getElementById('previewPiece').textContent = piece;
+    selectedPiece.push(pieceName);
+    subTotalPiece.push(parseInt(piecePrice));
+    localStorage.setItem('Repuesto', JSON.stringify(selectedPiece));
+};
+//Agregar Repuesto - Add Piece
+
+const addPiece = () => {
+    previewPiece.innerHTML = '<h4>Repuestos:</h4><ul id="pieceList"></ul>';
+    selectedPiece.forEach(item => {
+        previewPiece.innerHTML += `<li>${item} <a onclick="removePiece(this);">&times;</a></li>`
+    })
+
 };
 
+//Quitar Repuesto - Remove Piece
+const removePiece = (content) => {
+    content.parentNode.parentNode.removeChild(content.parentNode);
+    subTotalPiece.length = subTotalPiece.length - 1;
+    selectedPiece.length = selectedPiece.length - 1;
 
+};
+
+//Eventos - Events
+
+addPieceBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    opSelectedPiece();
+    addPiece();
+
+    console.log(selectedPiece);
+    console.log(subTotalPiece);
+
+});
 
 
 //-------------------------- RESULTADO FINAL --------------------------//

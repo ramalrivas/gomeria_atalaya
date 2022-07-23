@@ -1,0 +1,36 @@
+ [{
+     "id": 1,
+     "service": "Desarme y Arme",
+     "price": 850,
+     "qty": 0
+ }, {
+     "id": 2,
+     "service": "Desarme (solo)",
+     "price": 425,
+     "qty": 0
+ }, {
+     "id": 3,
+     "service": "Arme (solo)",
+     "price": 425,
+     "qty": 0
+ }, {
+     "id": 4,
+     "service": "Auxilio para Internos",
+     "price": 1990,
+     "qty": 0
+ }, {
+     "id": 5,
+     "service": "Parche con Durlol",
+     "price": 820,
+     "qty": 0
+ }, {
+     "id": 6,
+     "service": "Colocación Bandalin (precio x rueda)",
+     "price": 250,
+     "qty": 0
+ }, {
+     "id": 7,
+     "service": "Servicio de Vigia (precio x rueda)",
+     "price": 260,
+     "qty": 0
+ }]

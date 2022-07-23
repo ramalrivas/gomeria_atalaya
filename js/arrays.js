@@ -4,6 +4,7 @@ const idUsser = [{ uss: 'admin', pass: 1234 }];
 //Internos de Linea de Transporte
 const idClient = [{ line: 624, unit: 1 }, { line: 624, unit: 2 }, { line: 624, unit: 3 }, { line: 624, unit: 4 }, { line: 624, unit: 5 }, { line: 624, unit: 7 }, { line: 624, unit: 8 }, { line: 624, unit: 9 }, { line: 624, unit: 10 }, { line: 624, unit: 11 }, { line: 624, unit: 12 }];
 // Stock de Repuestos.
+/*
 const pieceStock = [{
         id: 0,
         piece: "Solo Servcio, sin repuestos",
@@ -197,7 +198,8 @@ const pieceStock = [{
         qty: 10
     }
 ];
-
+*/
+/*
 // Servicios Ofrecidos.
 const serviceType = [{
         id: 1,
@@ -243,3 +245,4 @@ const serviceType = [{
         qty: 0
     },
 ];
+*/
